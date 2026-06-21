@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九游 · 日常查询与对照指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f8f9fb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1f2a3a;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 720px;
+      width: 100%;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid #dfe4ec;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .top-nav .brand {
+      font-weight: 550;
+      font-size: 1.3rem;
+      color: #1f2a3a;
+      letter-spacing: 0.02em;
+    }
+
+    .top-nav .brand a {
+      color: #1f2a3a;
+      text-decoration: none;
+    }
+
+    .top-nav .brand a:hover {
+      opacity: 0.7;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      font-size: 0.9rem;
+      color: #556271;
+    }
+
+    .nav-links span {
+      cursor: default;
+      border-bottom: 1px solid transparent;
+      transition: border 0.15s;
+    }
+
+    .nav-links span:hover {
+      border-bottom: 1px solid #9aa8ba;
+    }
+
+    /* hero 区 */
+    .hero {
+      margin-bottom: 3.2rem;
+    }
+
+    .hero h1 {
+      font-weight: 520;
+      font-size: 2rem;
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #3a4a5e;
+      max-width: 560px;
+      font-size: 1rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero .inline-link {
+      color: #175a8f;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+
+    .hero .inline-link:hover {
+      background: #e9eff7;
+    }
+
+    /* 简介段落 */
+    .intro-block {
+      background: #ffffff;
+      padding: 1.8rem 1.8rem;
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 1px 4px rgba(0,0,0,0.03);
+      margin-bottom: 2.6rem;
+    }
+
+    .intro-block p {
+      margin-bottom: 0.9rem;
+    }
+
+    .intro-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-block a {
+      color: #175a8f;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 三个场景模块 */
+    .scenes-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .scene-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.6rem 1.8rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02), 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #eef1f5;
+    }
+
+    .scene-card h3 {
+      font-weight: 500;
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .scene-card h3::before {
+      content: "—";
+      color: #9aa8ba;
+      font-weight: 300;
+    }
+
+    .scene-card p {
+      color: #3a4a5e;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .scene-card .meta-note {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: #79899b;
+      border-left: 2px solid #dde3ec;
+      padding-left: 0.6rem;
+    }
+
+    /* 常见说明 (FAQ 摘要) */
+    .faq-summary {
+      margin-top: 1.2rem;
+      margin-bottom: 3.2rem;
+    }
+
+    .faq-summary h2 {
+      font-weight: 500;
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+      border-left: 4px solid #cbd5e3;
+      padding-left: 0.9rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e6ebf2;
+      padding-bottom: 0.9rem;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      color: #1f2a3a;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-item p {
+      color: #495a6e;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .faq-item a {
+      color: #175a8f;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 底部 */
+    .footer-note {
+      border-top: 1px solid #dfe4ec;
+      padding-top: 1.6rem;
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: #8d9bab;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-note a {
+      color: #556271;
+      text-decoration: none;
+      border-bottom: 1px dotted #c8d2de;
+    }
+
+    .footer-note a:hover {
+      border-bottom: 1px solid #556271;
+    }
+
+    /* 响应式 */
+    @media (max-width: 480px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .top-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+        align-items: flex-start;
+      }
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .intro-block, .scene-card {
+        padding: 1.2rem;
+      }
+      .faq-summary h2 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+      <span class="brand"><a href="https://app1-9games.com">九游</a></span>
+      <div class="nav-links">
+        <span>对照</span>
+        <span>延伸</span>
+        <span>说明</span>
+      </div>
+    </nav>
+
+    <!-- hero 区 -->
+    <div class="hero">
+      <h1>日常查询 · 对照 · 延伸阅读</h1>
+      <p>
+        无论是快速确认游戏分类、对比数值设定，还是回溯早期版本记录，<a href="https://app1-9games.com" class="inline-link">九游</a> 提供了一套轻量的检索与参照框架。本页从三个常遇场景切入，配合基础说明，方便按需取用。
+      </p>
+    </div>
+
+    <!-- 核心介绍 -->
+    <div class="intro-block">
+      <p>
+        围绕 <a href="https://app1-9games.com">九游</a> 的内容组织，偏向于「索引‑对照」结构：每个条目保留简短描述与关键标签，不堆叠冗余推荐。信息层级采用标题‑子项两级，适合快速扫描。以下三个场景覆盖多数日常使用情形。
+      </p>
+      <p>
+        所有数据源均来自公开档案与版本注释，不包含主观评级或引导性表述。如需查阅完整列表，可直接前往主站。
+      </p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes-grid">
+      <div class="scene-card">
+        <h3>查询与交叉比对</h3>
+        <p>在浏览条目时，常需要同时参照多个字段（例如发行年份、制作方、标签分类）。<a href="https://app1-9games.com">九游</a> 的列表视图支持并列显示，减少页面跳转。对于名称相似或系列作品，可通过侧边筛选缩小范围。</p>
+        <span class="meta-note">适用：快速确认细节 · 版本对照</span>
+      </div>
+      <div class="scene-card">
+        <h3>延伸阅读与关联条目</h3>
+        <p>每个条目下方关联「参考链接」与「同期作品」板块，便于沿单一兴趣点扩展。例如查看某款游戏的页面后，可顺带浏览同一开发组的其他作品，或相同题材的条目。<a href="https://app1-9games.com">九游</a> 不预设推荐路径，仅按元数据关联。</p>
+        <span class="meta-note">适用：探索 · 横向比较</span>
+      </div>
+      <div class="scene-card">
+        <h3>历史记录与更新摘要</h3>
+        <p>部分条目附带简短变更日志，记录描述修正、分类调整或新增别称。该摘要独立于正文，标明时间戳与来源。<a href="https://app1-9games.com">九游</a> 维护者定期合并社区提报的修订，保持信息时效。</p>
+        <span class="meta-note">适用：版本追溯 · 信息核实</span>
+      </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-summary">
+      <h2>常见说明</h2>
+      <div class="faq-item">
+        <strong>条目标注的「对照」是什么意思？</strong>
+        <p>表示该条目包含一组可比对的属性（如名称、年代、标签），便于与其他条目并列查看。对照标记不暗示品质或优先级。</p>
+      </div>
+      <div class="faq-item">
+        <strong>延伸阅读中的链接指向哪里？</strong>
+        <p>指向 <a href="https://app1-9games.com">九游</a> 站内相关条目或外部可靠存档（如维基类站点、官方历史页面）。链接会标注来源域，由用户自行判断。</p>
+      </div>
+      <div class="faq-item">
+        <strong>更新摘要多久刷新一次？</strong>
+        <p>摘要随条目内容变动而更新，不设固定周期。每次修订会保留前次版本摘要，历史记录至少保留三个月。</p>
+      </div>
+      <div class="faq-item">
+        <strong>移动端浏览是否有差别？</strong>
+        <p>列表与卡片布局在窄屏下会自动调整为单列，筛选器置于顶部。所有交互元素（链接、展开按钮）保持可触控尺寸。</p>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+      <span>信息索引 · 日常查询</span>
+      <span><a href="https://app1-9games.com">九游</a> · 2025</span>
+    </div>
+  </div>
+</body>
+</html>
